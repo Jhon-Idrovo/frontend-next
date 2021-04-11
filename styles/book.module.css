@@ -1,0 +1,15 @@
+.book-table {
+  table-layout: auto;
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 5px;
+}
+
+.exp-show-thead th {
+  border: ridge;
+  background-color: blanchedalmond;
+}
+
+.exp-show-tr td {
+  border-bottom: 0.1em solid rgb(253, 253, 253);
+}

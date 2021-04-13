@@ -30,7 +30,7 @@ function Login({ isLoged, setIsLoged }) {
         axiosInstance.defaults.headers["Authorization"] =
           "JWT " + data["access"];
         setIsLoged(true);
-        router.push("/create-expense/");
+        router.push("/save-expenses");
       }
     });
   };

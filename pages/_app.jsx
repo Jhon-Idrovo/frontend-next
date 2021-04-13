@@ -1,4 +1,5 @@
 import "../styles/global.css";
+import "../scss/custom.scss";
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import Head from "next/head";
@@ -8,9 +9,9 @@ function App({ Component, pageProps }) {
   const router = useRouter();
   const [isLoged, setIsLoged] = useState(false);
 
-  useEffect(() => {
-    setIsLoged(Boolean(localStorage.getItem("access_token")));
-  }, []);
+  // useEffect(() => {
+  //   setIsLoged(Boolean(localStorage.getItem("access_token")));
+  // }, []);
 
   return (
     <>

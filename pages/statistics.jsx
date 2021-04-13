@@ -10,11 +10,6 @@ import axiosInstance from "../axios";
 import ExpPercentages from "../components/ExpPercentages";
 import I_E_P from "../components/I_E_P";
 
-const dummie =
-  typeof window !== "undefined"
-    ? localStorage.setItem("access_token", "dummie")
-    : null;
-
 const options = {
   scales: {
     xAxes: [
@@ -57,20 +52,6 @@ function Statistics({ isLoged }) {
 
   const submit = () => {
     axiosInstance.post("api/statistics/", timeFrame).then((response) => {
-      // let resData = {
-      //   labels: [1, 2, 3, 4, 5, 6, 7],
-      //   datasets: [],
-      // };
-      // let series = response.data.series;
-      // series.forEach((serie) => {
-      //   serie.backgroundColor =
-      //     "#" +
-      //     ("00000" + ((Math.random() * (1 << 24)) | 0).toString(16)).slice(-6);
-      // });
-      // resData.datasets = series;
-      // resData.labels = response.data.labels;
-      // setData(resData);
-      console.log(response.data);
       setData(response.data);
     });
   };
@@ -91,122 +72,52 @@ function Statistics({ isLoged }) {
 
   return (
     <div>
-      <Accordion defaultActiveKey="0">
-        <Card>
-          <Accordion.Toggle as={Card.Header} eventKey="0">
-            Click me!
-          </Accordion.Toggle>
-          <Accordion.Collapse eventKey="0">
-            <Card.Body>
-              <div>
-                <h4 className="graph-header">
-                  Monto acumulado por cada tipo de gasto por mes
-                </h4>
-                <Line data={data} options={options} />
-                <form className="stats-form">
-                  <span id="dates-container">
-                    <span className="date">
-                      <label htmlFor="initial-date">Fecha Inicio</label>
-                      <input
-                        type="date"
-                        name="initial"
-                        id="initial-date"
-                        value={timeFrame.init}
-                        onChange={(e) => {
-                          setTimeFrame({ ...timeFrame, init: e.target.value });
-                        }}
-                      />
-                    </span>
-                    <span className="date">
-                      <label htmlFor="end-date">Fecha Final</label>
-                      <input
-                        type="date"
-                        name="end"
-                        id="end-date"
-                        value={timeFrame.end}
-                        onChange={(e) => {
-                          setTimeFrame({ ...timeFrame, end: e.target.value });
-                        }}
-                      />
-                    </span>
-                  </span>
-                  <input
-                    type="submit"
-                    value="Cargar"
-                    onClick={handleSubmit}
-                    id="submit-btn"
-                  />
-                </form>
-                <button onClick={changeColors}>Generar nuevos colores</button>
-              </div>
-            </Card.Body>
-          </Accordion.Collapse>
-        </Card>
-      </Accordion>
-      <Accordion defaultActiveKey="0">
-        <Card>
-          <Accordion.Toggle as={Card.Header} eventKey="0">
-            Click me!
-          </Accordion.Toggle>
-          <Accordion.Collapse eventKey="0">
-            <Card.Body>Hello! I'm the body</Card.Body>
-          </Accordion.Collapse>
-        </Card>
-      </Accordion>
-      <Accordion defaultActiveKey="0">
-        <Card>
-          <Accordion.Toggle as={Card.Header} eventKey="0">
-            Click me!
-          </Accordion.Toggle>
-          <Accordion.Collapse eventKey="0">
-            <Card.Body>Hello! I'm the body</Card.Body>
-          </Accordion.Collapse>
-        </Card>
-      </Accordion>
-    </div>
-  );
-
-  return (
-    <div>
-      <h4 className="graph-header">
-        Monto acumulado por cada tipo de gasto por mes
-      </h4>
-      <Line data={data} options={options} />
-      <form className="stats-form">
-        <span id="dates-container">
-          <span className="date">
-            <label htmlFor="initial-date">Fecha Inicio</label>
-            <input
-              type="date"
-              name="initial"
-              id="initial-date"
-              value={timeFrame.init}
-              onChange={(e) => {
-                setTimeFrame({ ...timeFrame, init: e.target.value });
-              }}
-            />
+      <div className="py-8 px-8 max-w-sm mx-auto bg-white rounded-xl shadow-md space-y-2 sm:py-4 sm:flex sm:items-center sm:space-y-0 sm:space-x-6">
+        <h4 className="graph-header">
+          Monto acumulado por cada tipo de gasto por mes
+        </h4>
+        <Line data={data} options={options} />
+        <form className="stats-form">
+          <span id="dates-container">
+            <span className="date">
+              <label htmlFor="initial-date">Fecha Inicio</label>
+              <input
+                type="date"
+                name="initial"
+                id="initial-date"
+                value={timeFrame.init}
+                onChange={(e) => {
+                  setTimeFrame({ ...timeFrame, init: e.target.value });
+                }}
+              />
+            </span>
+            <span className="date">
+              <label htmlFor="end-date">Fecha Final</label>
+              <input
+                type="date"
+                name="end"
+                id="end-date"
+                value={timeFrame.end}
+                onChange={(e) => {
+                  setTimeFrame({ ...timeFrame, end: e.target.value });
+                }}
+              />
+            </span>
           </span>
-          <span className="date">
-            <label htmlFor="end-date">Fecha Final</label>
-            <input
-              type="date"
-              name="end"
-              id="end-date"
-              value={timeFrame.end}
-              onChange={(e) => {
-                setTimeFrame({ ...timeFrame, end: e.target.value });
-              }}
-            />
-          </span>
-        </span>
-        <input
-          type="submit"
-          value="Cargar"
-          onClick={handleSubmit}
-          id="submit-btn"
-        />
-      </form>
-      <button onClick={changeColors}>Generar nuevos colores</button>
+          <input
+            type="submit"
+            value="Cargar"
+            onClick={handleSubmit}
+            id="submit-btn"
+          />
+        </form>
+        <button
+          className="py-2 px-4 font-semibold rounded-lg shadow-md text-white bg-green-500 hover:bg-green-700"
+          onClick={changeColors}
+        >
+          Generar nuevos colores
+        </button>
+      </div>
       <ExpPercentages />
       <I_E_P />
     </div>
@@ -214,3 +125,80 @@ function Statistics({ isLoged }) {
 }
 
 export default Statistics;
+
+// return (
+//   <div>
+//     <Accordion defaultActiveKey="0">
+//       <Card>
+//         <Accordion.Toggle as={Card.Header} eventKey="0">
+//           Click me!
+//         </Accordion.Toggle>
+//         <Accordion.Collapse eventKey="0">
+//           <Card.Body>
+//             <div>
+//               <h4 className="graph-header">
+//                 Monto acumulado por cada tipo de gasto por mes
+//               </h4>
+//               <Line data={data} options={options} />
+//               <form className="stats-form">
+//                 <span id="dates-container">
+//                   <span className="date">
+//                     <label htmlFor="initial-date">Fecha Inicio</label>
+//                     <input
+//                       type="date"
+//                       name="initial"
+//                       id="initial-date"
+//                       value={timeFrame.init}
+//                       onChange={(e) => {
+//                         setTimeFrame({ ...timeFrame, init: e.target.value });
+//                       }}
+//                     />
+//                   </span>
+//                   <span className="date">
+//                     <label htmlFor="end-date">Fecha Final</label>
+//                     <input
+//                       type="date"
+//                       name="end"
+//                       id="end-date"
+//                       value={timeFrame.end}
+//                       onChange={(e) => {
+//                         setTimeFrame({ ...timeFrame, end: e.target.value });
+//                       }}
+//                     />
+//                   </span>
+//                 </span>
+//                 <input
+//                   type="submit"
+//                   value="Cargar"
+//                   onClick={handleSubmit}
+//                   id="submit-btn"
+//                 />
+//               </form>
+//               <button onClick={changeColors}>Generar nuevos colores</button>
+//             </div>
+//           </Card.Body>
+//         </Accordion.Collapse>
+//       </Card>
+//     </Accordion>
+//     <Accordion defaultActiveKey="0">
+//       <Card>
+//         <Accordion.Toggle as={Card.Header} eventKey="0">
+//           Click me!
+//         </Accordion.Toggle>
+//         <Accordion.Collapse eventKey="0">
+//           <Card.Body>Hello! I'm the body</Card.Body>
+//         </Accordion.Collapse>
+//       </Card>
+//     </Accordion>
+//     <Accordion defaultActiveKey="0">
+//       <Card>
+//         <Accordion.Toggle as={Card.Header} eventKey="0">
+//           Click me!
+//         </Accordion.Toggle>
+//         <Accordion.Collapse eventKey="0">
+//           <Card.Body>Hello! I'm the body</Card.Body>
+//         </Accordion.Collapse>
+//       </Card>
+//     </Accordion>
+//   </div>
+// );

@@ -20,6 +20,9 @@
     "sass": "^1.32.8"
   },
   "devDependencies": {
-    "cross-env": "^7.0.3"
+    "autoprefixer": "^10.2.5",
+    "cross-env": "^7.0.3",
+    "postcss": "^8.2.10",
+    "tailwindcss": "^2.1.1"
   }
 }

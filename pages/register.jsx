@@ -54,13 +54,17 @@ function Register() {
       });
   };
   return (
-    <div className="form-container">
+    <div className="container">
       <form className="form">
-        <h3 className="form-title">REGISTRO</h3>
-        <ul id="error-msgs">
+        <h3 className="font-bold">REGISTRO</h3>
+        <ul className="error-msgs">
           {errorMessage &&
             errorMessage.map((msg) => {
-              return <li>{msg}</li>;
+              return (
+                <li className="list-item text-error list-disc list-inside text-sm">
+                  {msg}
+                </li>
+              );
             })}
         </ul>
         <input
@@ -68,6 +72,7 @@ function Register() {
           name="email"
           id="email"
           placeholder="Email"
+          className="login-register-input"
           onChange={handleChange}
         />
         <input
@@ -75,6 +80,7 @@ function Register() {
           name="username"
           id="username"
           placeholder="Nombre de usuario"
+          className="login-register-input"
           onChange={handleChange}
         />
         <input
@@ -82,6 +88,7 @@ function Register() {
           name="password"
           id="password"
           placeholder="Contraseña"
+          className="login-register-input"
           onChange={handleChange}
         />
         <input
@@ -90,10 +97,11 @@ function Register() {
           className="submit-btn"
           onClick={handleSubmit}
         />
-        <p>
-          Ya tienes una cuenta?{" "}
+        <p className="self-start mt-4 font-semibold">Ya tienes una cuenta? </p>
+        <p className="self-start font-light">
+          Ingresa{" "}
           <Link href="/login">
-            <a>Ingresa aquí</a>
+            <a>aquí</a>
           </Link>
         </p>
       </form>

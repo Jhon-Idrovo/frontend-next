@@ -3,7 +3,7 @@ import "../styles/loading.module.css";
 
 function Loading() {
   return (
-    <div className="message-container">
+    <div className="container">
       <div className="message-box">
         <div className="spinner"></div>
         <p>Cargando...</p>

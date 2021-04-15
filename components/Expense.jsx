@@ -1,7 +1,7 @@
 function Expense({ exp }) {
   return (
     <>
-      <tr className="exp-show-tr">
+      <tr className="border-b-2 border-blue-600">
         <td>{exp.date}</td>
         <td>{exp.exp_type}</td>
         <td>{exp.description}</td>

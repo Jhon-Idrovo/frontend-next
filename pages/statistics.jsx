@@ -1,10 +1,6 @@
 import { useEffect, useState } from "react";
 
 import { Line } from "react-chartjs-2";
-import Accordion from "react-bootstrap/Accordion";
-import Card from "react-bootstrap/Card";
-
-import "../styles/statistics.module.css";
 import LogNeeded from "../components/LogNeeded";
 import axiosInstance from "../axios";
 import ExpPercentages from "../components/ExpPercentages";
@@ -45,7 +41,7 @@ const defaultDate = {
 function Statistics({ isLoged }) {
   const [data, setData] = useState(null);
   const [timeFrame, setTimeFrame] = useState(defaultDate);
-
+  const [pie, setPie] = useState(false);
   useEffect(() => {
     submit();
   }, []);
@@ -68,58 +64,66 @@ function Statistics({ isLoged }) {
       submit();
     });
   };
+
+  const handleAccordion = (e) => {
+    e.preventDefault();
+    console.log(e.target.id);
+  };
   if (!isLoged) return <LogNeeded />;
 
   return (
     <div>
-      <div className="py-8 px-8 max-w-sm mx-auto bg-white rounded-xl shadow-md space-y-2 sm:py-4 sm:flex sm:items-center sm:space-y-0 sm:space-x-6">
+      <div className="flex flex-col">
         <h4 className="graph-header">
           Monto acumulado por cada tipo de gasto por mes
         </h4>
         <Line data={data} options={options} />
-        <form className="stats-form">
-          <span id="dates-container">
-            <span className="date">
-              <label htmlFor="initial-date">Fecha Inicio</label>
-              <input
-                type="date"
-                name="initial"
-                id="initial-date"
-                value={timeFrame.init}
-                onChange={(e) => {
-                  setTimeFrame({ ...timeFrame, init: e.target.value });
-                }}
-              />
-            </span>
-            <span className="date">
-              <label htmlFor="end-date">Fecha Final</label>
-              <input
-                type="date"
-                name="end"
-                id="end-date"
-                value={timeFrame.end}
-                onChange={(e) => {
-                  setTimeFrame({ ...timeFrame, end: e.target.value });
-                }}
-              />
-            </span>
+        <form className="timeframe-form">
+          <span className="">
+            <label htmlFor="initial-date" className="mx-2">
+              Fecha Inicio
+            </label>
+            <input
+              type="date"
+              name="initial"
+              id="initial-date"
+              value={timeFrame.init}
+              onChange={(e) => {
+                setTimeFrame({ ...timeFrame, init: e.target.value });
+              }}
+            />
+            <br className="sm:hidden" />
+            <label htmlFor="end-date" className="mx-2">
+              Fecha Final
+            </label>
+            <input
+              type="date"
+              name="end"
+              id="end-date"
+              value={timeFrame.end}
+              onChange={(e) => {
+                setTimeFrame({ ...timeFrame, end: e.target.value });
+              }}
+            />
           </span>
-          <input
-            type="submit"
-            value="Cargar"
-            onClick={handleSubmit}
-            id="submit-btn"
-          />
+          <span className="mr-2">
+            <button
+              className="bg-blue-500 px-2 text-white rounded-sm h-full w-full"
+              type="submit"
+              onClick={handleSubmit}
+              id="submit-btn"
+            >
+              Cargar
+            </button>
+          </span>
         </form>
         <button
-          className="py-2 px-4 font-semibold rounded-lg shadow-md text-white bg-green-500 hover:bg-green-700"
+          className="bg-blue-500 px-6 py-2 mt-2 text-white rounded-sm self-center"
           onClick={changeColors}
         >
           Generar nuevos colores
         </button>
       </div>
-      <ExpPercentages />
-      <I_E_P />
     </div>
   );
 }

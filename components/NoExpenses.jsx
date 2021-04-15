@@ -2,7 +2,7 @@ import React from "react";
 
 function NoExpenses() {
   return (
-    <div className="message-container">
+    <div className="container">
       <div className="message-box">
         <h3 className="message-header">Vaya!</h3>
         <p>

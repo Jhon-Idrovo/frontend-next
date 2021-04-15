@@ -5,14 +5,29 @@ import Link from "next/link";
 import Head from "next/head";
 import { useRouter } from "next/router";
 
+import axiosInstance from "../axios";
+
 function App({ Component, pageProps }) {
   const router = useRouter();
   const [isLoged, setIsLoged] = useState(false);
 
-  // useEffect(() => {
-  //   setIsLoged(Boolean(localStorage.getItem("access_token")));
-  // }, []);
+  useEffect(() => {
+    setIsLoged(Boolean(localStorage.getItem("access_token")));
+  }, []);
 
+  const hangleLogout = (e) => {
+    e.preventDefault();
+    axiosInstance
+      .post("api/logout/", {
+        refresh_token: localStorage.getItem("refresh_token"),
+      })
+      .then((res) => {
+        if (res.status === 202) {
+          localStorage.removeItem("access_token");
+          setIsLoged(false);
+        }
+      });
+  };
   return (
     <>
       <Head>
@@ -20,10 +35,12 @@ function App({ Component, pageProps }) {
         <meta name="description" content="App for tracking your expenses" />
         <meta property="og:image" />
         <meta name="og:title" content="Home Finance" />
+
+        <link rel="preconnect" href="https://fonts.gstatic.com" />
         <link
-          href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,300;0,400;0,500;0,600;0,700;0,900;1,100;1,300;1,400;1,500;1,800&display=swap"
           rel="stylesheet"
-        />
+        ></link>
         <link
           rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
@@ -32,65 +49,80 @@ function App({ Component, pageProps }) {
         />
       </Head>
 
-      <nav>
-        <div className="first-line">
-          <label className="logo">Home Finance</label>
-          <ul className="extras">
-            <li className="list-item">
+      <nav className="border-0 bg-gradient-to-t from-blue-900 to-gray-900">
+        <div className=" flex justify-between ">
+          <label className=" text-white font-bold text-xl md:text-4xl m-4">
+            Home Finance
+          </label>
+          <ul className="flex justify-between">
+            <li className="p-2">
               {!isLoged ? (
-                <Link
-                  href="/login/"
-                  className={
-                    router.pathname === "/login" ? "upper-active" : "upper-btn"
-                  }
-                >
-                  <a>Login</a>
+                <Link href="/login/">
+                  <a
+                    className={
+                      "rounded-sm px-1 py-2 " +
+                      (router.pathname === "/login" ? "active" : "inactive")
+                    }
+                  >
+                    Login
+                  </a>
                 </Link>
               ) : (
-                <Link
-                  href="/logout/"
-                  className={
-                    router.pathname === "/logout" ? "upper-active" : "upper-btn"
-                  }
+                <button
+                  onClick={hangleLogout}
+                  className="rounded-sm px-1 py2 inactive"
                 >
-                  <a>Logout</a>
-                </Link>
+                  Logout
+                </button>
               )}
             </li>
-            <li className="list-item">
-              <Link
-                href="/config"
-                className={
-                  router.pathname === "/config" ? "upper-active" : "upper-btn"
-                }
-              >
+            <li className="p-2">
+              <Link href="/config">
                 <a>
-                  <i className="fas fa-cog"></i>
+                  <i
+                    className={
+                      "rounded-sm px-1 py-2 fas fa-cog " +
+                      (router.pathname === "/config" ? "active" : "inactive")
+                    }
+                  ></i>
                 </a>
               </Link>
             </li>
           </ul>
         </div>
-        <ul>
-          <li className="list-item">
+        <ul className="flex justify-around">
+          <li className="flex">
             <Link href="/save-expenses">
               <a
-                className={router.pathname === "/save-expenses" ? "active" : ""}
+                className={
+                  "p-2 rounded-t-sm " +
+                  (router.pathname === "/save-expenses" ? "active" : "inactive")
+                }
               >
                 Registrar Gasto
               </a>
             </Link>
           </li>
-          <li className="list-item">
+          <li className="flex">
             <Link href="/statistics">
-              <a className={router.pathname === "/statistics" ? "active" : ""}>
+              <a
+                className={
+                  "p-2 rounded-t-sm " +
+                  (router.pathname === "/statistics" ? "active" : "inactive")
+                }
+              >
                 Estadísticas
               </a>
             </Link>
           </li>
-          <li className="list-item">
+          <li className="flex">
             <Link href="/book">
-              <a className={router.pathname === "/book" ? "active" : ""}>
+              <a
+                className={
+                  "p-2 rounded-t-sm " +
+                  (router.pathname === "/book" ? "active" : "inactive")
+                }
+              >
                 Gastos
               </a>
             </Link>

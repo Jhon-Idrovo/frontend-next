@@ -2,7 +2,7 @@ import { useState } from "react";
 
 import LogNeeded from "../components/LogNeeded";
 import ExpRow from "../components/ExpRow";
-import "../styles/save-expenses.module.css";
+
 import axiosInstance from "../axios";
 
 const baseExpense = {
@@ -56,17 +56,17 @@ function SaveExpenses({ isLoged }) {
 
   if (!isLoged) return <LogNeeded />;
   return (
-    <div className="exp-container">
-      <form id="expenses-form">
-        <table>
+    <div className="">
+      <form>
+        <table className="w-screen">
           <thead>
-            <tr className="head-row">
-              <th className="table-headers">Tipo</th>
-              <th className="table-headers">Descripción</th>
-              <th className="table-headers">Monto</th>
+            <tr>
+              <th className="border-b-2">Tipo</th>
+              <th className="border-b-2">Descripción</th>
+              <th className="border-b-2">Monto</th>
             </tr>
           </thead>
-          <tbody id="table-body">
+          <tbody>
             {expenses.map((exp, index) => {
               return (
                 <ExpRow
@@ -79,26 +79,31 @@ function SaveExpenses({ isLoged }) {
             })}
           </tbody>
           <tfoot>
-            <button id="add-btn" onClick={addRow}>
-              Añadir fila
+            <button
+              className="px-2 py-1 bg-blue-500 motion-safe:hover:scale-110 text-white rounded-sm active:bg-blue-600 "
+              onClick={addRow}
+            >
+              Añadir entrada
             </button>
           </tfoot>
         </table>
         {emptyValue && (
-          <div id="empty-row-err">
+          <div className="text-error">
             <p>
               Porfavor llena todas las casillas anteriores para poder añadir una
-              nueva fila
+              nueva entrada
             </p>
           </div>
         )}
-        <div id="submit-container">
-          <input
+        <div className="flex justify-around w-full">
+          <button
             type="submit"
             value="Guardar"
+            className="bg-blue-500 px-6 py-2 text-white rounded-sm mt-5"
             onClick={handleSubmit}
-            className="exp-submit-btn"
-          />
+          >
+            Guardar
+          </button>
         </div>
       </form>
       <datalist id="expensesList">

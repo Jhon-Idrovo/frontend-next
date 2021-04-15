@@ -1,12 +1,12 @@
 import { useState, useEffect } from "react";
-import Layout from "../components/Layout";
 
 import axiosInstance from "../axios";
 import NoExpenses from "../components/NoExpenses";
 import Error from "../components/Error";
-import "../styles/book.module.css";
+
 import LogNeeded from "../components/LogNeeded";
 import Loading from "../components/Loading";
+import Expense from "../components/Expense";
 
 function ExpensesList({ isLoged }) {
   const [expenses, setExpenses] = useState(null);
@@ -40,23 +40,21 @@ function ExpensesList({ isLoged }) {
     return <Error />;
   }
   return (
-    <Layout>
-      <table className="book-table">
-        <thead className="exp-show-thead">
-          <tr>
-            <th>Fecha</th>
-            <th>Tipo</th>
-            <th>Descripción</th>
-            <th>Monto</th>
-          </tr>
-        </thead>
-        <tbody className="exp-show-tbody">
-          {expenses.map((exp, index) => {
-            return <Expense exp={exp} key={index} />;
-          })}
-        </tbody>
-      </table>
-    </Layout>
+    <table className="w-screen text-xs sm:text-base">
+      <thead className="border-b-4 border-blue-600">
+        <tr>
+          <th>Fecha</th>
+          <th>Tipo</th>
+          <th>Descripción</th>
+          <th>Monto</th>
+        </tr>
+      </thead>
+      <tbody className="exp-show-tbody">
+        {expenses.map((exp, index) => {
+          return <Expense exp={exp} key={index} />;
+        })}
+      </tbody>
+    </table>
   );
 }
 

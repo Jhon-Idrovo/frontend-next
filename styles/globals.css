@@ -1,157 +1,98 @@
-* {
-  padding: 0;
-  margin: 0;
-  text-decoration: none;
-  list-style: none;
-  box-sizing: border-box;
-}
-body {
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-  font-family: "Montserrat", sans-serif;
-  background-color: rgb(206, 203, 235);
+@tailwind base;
+
+@layer base {
+  body {
+    @apply bg-blue-100;
+    font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI",
+      Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans",
+      sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+      "Noto Color Emoji";
+  }
+  a {
+    @apply font-medium;
+  }
+  p {
+    @apply font-light;
+  }
 }
 
-.logo {
-  color: antiquewhite;
-  font-size: x-large;
-  margin: 2%;
-  font-weight: bold;
-}
-nav {
-  background-color: rgb(245, 102, 102);
-  width: 100%;
-  display: block;
+@tailwind components;
+@tailwind utilities;
 
-  border-width: 0;
+.active {
+  @apply text-black  bg-blue-100;
+}
+.inactive {
+  @apply text-white hover:text-black  hover:bg-blue-100;
 }
 
-nav ul {
-  display: flex;
-  justify-content: space-around;
-  height: 2rem;
+.accordion-bar {
+  @apply shadow-md w-full text-left;
+  background: linear-gradient(
+      180deg,
+      rgba(2, 0, 36, 1) 0%,
+      rgba(25, 47, 125, 1) 2%,
+      rgba(226, 234, 246, 0.7335083691679797) 100%
+    )
+    repeat scroll 0 0 transparent;
 }
 
-li {
-  display: flex;
+.login-register-input {
+  @apply mt-2 rounded-sm pl-2;
 }
-nav ul li a {
-  color: whitesmoke;
-  border-radius: 5px 5px 0 0;
-  padding: 5px;
-  border-width: 0;
-}
-
-a.active,
-a:hover {
-  background-color: rgb(206, 203, 235) !important;
-}
-
-.upper-active {
-  background-color: rgb(206, 203, 235);
-  border-radius: 5px;
-}
-
-.upper-btn:hover {
-  background-color: rgb(206, 203, 235);
-  border-radius: 5px;
-}
-
-.extras {
-  margin: 0.5vh;
-}
-
-.first-line {
-  display: flex;
-  justify-content: space-between;
-}
-
-/* AXILIARY MESSAGES FOR VIEWS */
-.message-container {
-  width: 100%;
-  height: 60vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-.message-box {
-  background-color: rgba(245, 244, 247, 0.822);
-  box-shadow: 0 8px 8px 0 rgba(0, 0, 0, 0.623),
-    0 6px 10px 0 rgba(0, 0, 0, 0.507);
-  border-radius: 5px;
-  max-width: 60%;
-  padding: 3%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-.message-header {
-  margin-bottom: 3%;
-}
-
-.message-box p {
-  text-align: center;
-}
-
-/* FORM STYLING */
-
-.form-container {
-  margin: 0;
-  height: 60vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+.submit-btn {
+  @apply px-2 py-1 mt-2 rounded-sm hover:scale-75 hover:bg-blue-400;
 }
 
 .form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  border-radius: 2px;
-  background-color: rgba(228, 226, 255, 0.877);
-  box-shadow: 0 8px 8px 0 rgba(0, 0, 0, 0.623),
-    0 6px 10px 0 rgba(0, 0, 0, 0.507);
-  padding: 5%;
+  @apply flex flex-col items-center justify-center w-4/6 md:w-2/5 p-3 shadow-2xl bg-blue-200 rounded-sm;
 }
 
-.form input {
-  display: block;
-  border-radius: 5px;
-  border: none;
+.form-input {
+  @apply w-full border-2;
+}
+
+.container {
+  @apply h-96 flex items-center justify-center md:h-80;
+}
+
+.message-box {
+  @apply bg-blue-200 p-2 shadow-2xl w-5/6 sm:w-96 rounded-sm flex flex-col items-center justify-center;
+}
+
+.message-header {
+  @apply font-bold text-lg;
+}
+.message {
+  @apply font-light;
+}
+
+.text-error {
+  @apply text-red-600;
+}
+
+.timeframe-form {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  grid-template-rows: auto;
+}
+
+.spinner {
+  border: 4px solid rgba(0, 0, 0, 0.63);
+  width: 5vh;
   height: 5vh;
-  margin: 3%;
-  font-family: "Montserrat", sans-serif;
-  padding: 1.5rem;
-  outline-color: rgba(137, 43, 226, 0.13);
+  border-radius: 50%;
+  margin-bottom: 2vh;
+
+  border-left-color: transparent;
+  animation: spin 0.2s linear infinite;
 }
 
-.form-title {
-  margin-bottom: 3%;
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
-
-.submit-btn:hover {
-  background-color: rgba(36, 25, 133, 0.808);
-}
-
-.form p {
-  margin-top: 5%;
-}
-
-/*form error messages  */
-#error-msgs li {
-  display: list-item;
-  color: red;
-  list-style: circle inside;
-  font-size: 0.9em;
-}
-
-.form-container a {
-  color: brown;
-}
-@tailwind base;
-@tailwind components;
-@tailwind utilities;

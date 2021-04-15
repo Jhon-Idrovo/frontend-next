@@ -3,7 +3,6 @@ import { useRouter } from "next/router";
 import Link from "next/link";
 
 import axiosInstance from "../axios";
-import "../styles/login.module.css";
 
 function Login({ isLoged, setIsLoged }) {
   const router = useRouter();
@@ -35,13 +34,14 @@ function Login({ isLoged, setIsLoged }) {
     });
   };
   return (
-    <div className="form-container">
+    <div className="container ">
       <form className="form">
-        <h3 className="form-title">INGRESO</h3>
+        <h3 className="font-bold">INGRESO</h3>
         <input
           type="text"
           name="username"
           id="username"
+          className="login-register-input"
           placeholder="Nombre de usuario"
           onChange={handleChange}
         />
@@ -49,6 +49,7 @@ function Login({ isLoged, setIsLoged }) {
           type="password"
           name="password"
           id="password"
+          className="login-register-input"
           placeholder="Contraseña"
           onChange={handleChange}
         />
@@ -58,12 +59,16 @@ function Login({ isLoged, setIsLoged }) {
           className="submit-btn"
           onClick={handleSubmit}
         />
-        <p>
-          No tienes una cuenta?{" "}
+
+        <span className="self-start mt-4 font-semibold ">
+          No tienes una cuenta aún?
+        </span>
+        <span className="self-start font-light">
+          Empieza a tomar el control de tu dinero presionando{" "}
           <Link href="/register">
-            <a>Registrate presionando aquí</a>
+            <a>aquí</a>
           </Link>
-        </p>
+        </span>
       </form>
     </div>
   );

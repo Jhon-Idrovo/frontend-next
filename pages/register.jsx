@@ -54,7 +54,7 @@ function Register() {
       });
   };
   return (
-    <div className="container">
+    <div className="base-container">
       <form className="form">
         <h3 className="font-bold">REGISTRO</h3>
         <ul className="error-msgs">

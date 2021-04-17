@@ -52,7 +52,7 @@
   @apply w-full border-2;
 }
 
-.container {
+.base-container {
   @apply h-96 flex items-center justify-center md:h-80;
 }
 

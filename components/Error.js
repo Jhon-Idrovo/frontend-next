@@ -2,7 +2,7 @@ import React from "react";
 
 function Error() {
   return (
-    <div className="message-container">
+    <div className="base-container">
       <div className="message-box">
         <h3 className="message-header">Disculpas</h3>
         <p>

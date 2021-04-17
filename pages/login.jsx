@@ -34,7 +34,7 @@ function Login({ isLoged, setIsLoged }) {
     });
   };
   return (
-    <div className="container ">
+    <div className="base-container ">
       <form className="form">
         <h3 className="font-bold">INGRESO</h3>
         <input

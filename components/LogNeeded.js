@@ -2,7 +2,7 @@ import Link from "next/link";
 
 function LogNeeded() {
   return (
-    <div className="container">
+    <div className="base-container">
       <div className="message-box">
         <h3 className="message-header">Vaya!</h3>
         <p className="message">

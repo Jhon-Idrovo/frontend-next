@@ -13,6 +13,7 @@ function App({ Component, pageProps }) {
 
   useEffect(() => {
     setIsLoged(Boolean(localStorage.getItem("access_token")));
+    console.log("main app re-rendered");
   }, []);
 
   const hangleLogout = (e) => {
@@ -22,6 +23,7 @@ function App({ Component, pageProps }) {
         refresh_token: localStorage.getItem("refresh_token"),
       })
       .then((res) => {
+        console.log(res.status);
         if (res.status === 202) {
           localStorage.removeItem("access_token");
           setIsLoged(false);

@@ -1,7 +1,7 @@
 import axios from "axios";
 
-//const baseURL = "http://127.0.0.1:8000/";
-const baseURL = "https://jhonidrovo.pythonanywhere.com/";
+const baseURL = "http://127.0.0.1:8000/";
+//const baseURL = "https://jhonidrovo.pythonanywhere.com/";
 
 const axiosInstance = axios.create({
   baseURL: baseURL,
@@ -63,7 +63,7 @@ axiosInstance.interceptors.response.use(
             .post("/api/token/refresh/", { refresh: refreshToken })
             .then((response) => {
               localStorage.setItem("access_token", response.data.access);
-              // localStorage.setItem("refresh_token", response.data.refresh);
+              //localStorage.setItem("refresh_token", response.data.refresh);
 
               axiosInstance.defaults.headers["Authorization"] =
                 "JWT " + response.data.access;
@@ -77,6 +77,8 @@ axiosInstance.interceptors.response.use(
             });
         } else {
           console.log("Refresh token is expired", tokenParts.exp, now);
+          localStorage.removeItem("refresh_token");
+          localStorage.removeItem("access_token");
           window.location.href = "/login/";
         }
       } else {

@@ -44,7 +44,7 @@ function ExpensesList({ isLoged }) {
     <div>
       <button
         type="submit"
-        className="btn-base text"
+        className="btn-base px-2 mt-1"
         onClick={() => ExportToExcel(expenses, "data")}
       >
         Descargar datos en Excel

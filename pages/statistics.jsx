@@ -25,6 +25,7 @@ const options = {
       },
     ],
   },
+  maintainAspectRatio: true,
 };
 
 let [month, date, year] = new Date().toLocaleDateString("en-US").split("/");
@@ -108,7 +109,7 @@ function Statistics({ isLoged }) {
           </span>
           <span className="mr-2">
             <button
-              className="bg-blue-500 px-2 text-white rounded-sm h-full w-full"
+              className="btn-base h-full w-full"
               type="submit"
               onClick={handleSubmit}
               id="submit-btn"
@@ -118,7 +119,7 @@ function Statistics({ isLoged }) {
           </span>
         </form>
         <button
-          className="bg-blue-500 px-6 py-2 mt-2 text-white rounded-sm self-center"
+          className="btn-base mt-2 self-center px-2"
           onClick={changeColors}
         >
           Generar nuevos colores

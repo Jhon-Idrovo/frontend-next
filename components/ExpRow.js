@@ -1,4 +1,4 @@
-function ExpRow({ handleChange, exp, index }) {
+function ExpRow({ handleChange, deleteRow, exp, index }) {
   return (
     <tr className="border-b-2 ">
       <td className=" exp-input w-2/5">
@@ -23,15 +23,18 @@ function ExpRow({ handleChange, exp, index }) {
           list={exp.expType}
         />
       </td>
-      <td className=" exp-input w-1/5">
+      <td className=" exp-input w-1/5 flex">
         <input
-          className="form-input"
+          className="border-2 w-min"
           type="number"
           value={exp.amount}
           onChange={(e) => handleChange(e, e.target.name, "amount")}
           placeholder="0.00"
           name={index}
         />
+        <button className="" onClick={(e) => deleteRow(e, index)}>
+          <i class="fas fa-trash-alt"></i>
+        </button>
       </td>
     </tr>
   );

@@ -7,6 +7,7 @@ import Error from "../components/Error";
 import LogNeeded from "../components/LogNeeded";
 import Loading from "../components/Loading";
 import Expense from "../components/Expense";
+import ExportToExcel from "../components/ExportToExcel";
 
 function ExpensesList({ isLoged }) {
   const [expenses, setExpenses] = useState(null);
@@ -40,21 +41,30 @@ function ExpensesList({ isLoged }) {
     return <Error />;
   }
   return (
-    <table className="w-screen text-xs sm:text-base">
-      <thead className="border-b-4 border-blue-600">
-        <tr>
-          <th>Fecha</th>
-          <th>Tipo</th>
-          <th>Descripción</th>
-          <th>Monto</th>
-        </tr>
-      </thead>
-      <tbody className="exp-show-tbody">
-        {expenses.map((exp, index) => {
-          return <Expense exp={exp} key={index} />;
-        })}
-      </tbody>
-    </table>
+    <div>
+      <button
+        type="submit"
+        className="btn-base text"
+        onClick={() => ExportToExcel(expenses, "data")}
+      >
+        Descargar datos en Excel
+      </button>
+      <table className="w-screen text-xs sm:text-base">
+        <thead className="border-b-4 border-blue-600">
+          <tr>
+            <th>Fecha</th>
+            <th>Tipo</th>
+            <th>Descripción</th>
+            <th>Monto</th>
+          </tr>
+        </thead>
+        <tbody className="exp-show-tbody">
+          {expenses.map((exp, index) => {
+            return <Expense exp={exp} key={index} />;
+          })}
+        </tbody>
+      </table>
+    </div>
   );
 }
 

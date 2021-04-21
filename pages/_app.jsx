@@ -78,7 +78,7 @@ function App({ Component, pageProps }) {
                 </button>
               )}
             </li>
-            <li className="p-2">
+            {/*<li className="p-2">
               <Link href="/config">
                 <a>
                   <i
@@ -89,7 +89,7 @@ function App({ Component, pageProps }) {
                   ></i>
                 </a>
               </Link>
-            </li>
+            </li> */}
           </ul>
         </div>
         <ul className="flex justify-around">

@@ -19,34 +19,45 @@ function SaveExpenses({ isLoged }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    axiosInstance
-      .post("api/save-expenses/", expenses)
-      .then((res) => {
-        if (res.status == 201) {
-          setExpenses([{ ...baseExpense }]);
-        } else throw Error;
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    if (!checkForEmpty()) {
+      axiosInstance
+        .post("api/save-expenses/", expenses)
+        .then((res) => {
+          if (res.status == 201) {
+            setExpenses([{ ...baseExpense }]);
+          } else throw Error;
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
   };
 
-  const addRow = (e) => {
-    e.preventDefault();
-    //run verification of no empty values
+  const checkForEmpty = () => {
     const lastRow = expenses[expenses.length - 1];
     for (let prop in lastRow) {
       console.log(lastRow[prop]);
       if (!lastRow[prop]) {
         setEmptyValue(true);
-        return;
+        return true;
       }
     }
     setEmptyValue(false);
-    setExpenses([...expenses, JSON.parse(JSON.stringify(baseExpense))]);
+    return false;
   };
 
+  const addRow = (e) => {
+    e.preventDefault();
+    //run verification of no empty values
+    checkForEmpty();
+    setExpenses([...expenses, JSON.parse(JSON.stringify(baseExpense))]);
+  };
+  const deleteRow = (e, index) => {
+    e.preventDefault();
+    let newArr = [...expenses];
+    newArr.splice(index, 1);
+    setExpenses(newArr);
+  };
   const handleChange = (e, index, inputField) => {
     let oldExp = Object.assign([], expenses);
 
@@ -71,6 +82,7 @@ function SaveExpenses({ isLoged }) {
               return (
                 <ExpRow
                   handleChange={handleChange}
+                  deleteRow={deleteRow}
                   exp={exp}
                   key={index}
                   index={index}
@@ -89,17 +101,14 @@ function SaveExpenses({ isLoged }) {
         </table>
         {emptyValue && (
           <div className="text-error">
-            <p>
-              Porfavor llena todas las casillas anteriores para poder añadir una
-              nueva entrada
-            </p>
+            <p>Porfavor llena todas las casillas anteriores para proceder</p>
           </div>
         )}
         <div className="flex justify-around w-full">
           <button
             type="submit"
             value="Guardar"
-            className="bg-blue-500 px-6 py-2 text-white rounded-sm mt-5"
+            className="btn-base px-8"
             onClick={handleSubmit}
           >
             Guardar

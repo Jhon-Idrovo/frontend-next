@@ -44,6 +44,9 @@
   @apply px-2 py-1 mt-2 rounded-sm hover:scale-75 hover:bg-blue-400;
 }
 
+.btn-base{
+  @apply bg-blue-500 py-2 text-white rounded-sm mt-5;
+}
 .form {
   @apply flex flex-col items-center justify-center w-4/6 md:w-2/5 p-3 shadow-2xl bg-blue-200 rounded-sm;
 }

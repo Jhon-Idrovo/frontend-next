@@ -81,31 +81,35 @@ function Statistics({ isLoged }) {
         <Line data={data} options={options} />
         <form className="timeframe-form">
           <span className="">
-            <label htmlFor="initial-date" className="mx-2">
-              Fecha Inicio
-            </label>
-            <input
-              type="date"
-              name="initial"
-              id="initial-date"
-              value={timeFrame.init}
-              onChange={(e) => {
-                setTimeFrame({ ...timeFrame, init: e.target.value });
-              }}
-            />
+            <span className="inline-block">
+              <label htmlFor="initial-date" className="mx-2">
+                Fecha Inicio
+              </label>
+              <input
+                type="date"
+                name="initial"
+                id="initial-date"
+                value={timeFrame.init}
+                onChange={(e) => {
+                  setTimeFrame({ ...timeFrame, init: e.target.value });
+                }}
+              />
+            </span>
             <br className="sm:hidden" />
-            <label htmlFor="end-date" className="mx-2">
-              Fecha Final
-            </label>
-            <input
-              type="date"
-              name="end"
-              id="end-date"
-              value={timeFrame.end}
-              onChange={(e) => {
-                setTimeFrame({ ...timeFrame, end: e.target.value });
-              }}
-            />
+            <span className="inline-block">
+              <label htmlFor="end-date" className="mx-2">
+                Fecha Final
+              </label>
+              <input
+                type="date"
+                name="end"
+                id="end-date"
+                value={timeFrame.end}
+                onChange={(e) => {
+                  setTimeFrame({ ...timeFrame, end: e.target.value });
+                }}
+              />
+            </span>
           </span>
           <span className="mr-2">
             <button

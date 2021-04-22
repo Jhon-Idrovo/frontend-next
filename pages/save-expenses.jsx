@@ -19,6 +19,7 @@ function SaveExpenses({ isLoged }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
     if (!checkForEmpty()) {
       axiosInstance
         .post("api/save-expenses/", expenses)

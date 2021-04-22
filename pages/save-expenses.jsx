@@ -50,8 +50,9 @@ function SaveExpenses({ isLoged }) {
   const addRow = (e) => {
     e.preventDefault();
     //run verification of no empty values
-    checkForEmpty();
-    setExpenses([...expenses, JSON.parse(JSON.stringify(baseExpense))]);
+    if (!checkForEmpty()) {
+      setExpenses([...expenses, JSON.parse(JSON.stringify(baseExpense))]);
+    }
   };
   const deleteRow = (e, index) => {
     e.preventDefault();
@@ -109,7 +110,7 @@ function SaveExpenses({ isLoged }) {
           <button
             type="submit"
             value="Guardar"
-            className="btn-base px-8"
+            className="btn-base px-8 mt-3"
             onClick={handleSubmit}
           >
             Guardar

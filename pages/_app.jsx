@@ -6,8 +6,9 @@ import Head from "next/head";
 import { useRouter } from "next/router";
 
 import axiosInstance from "../axios";
-
+import useI18n from "../hooks/useI18n";
 function App({ Component, pageProps }) {
+  const { navBar: t } = useI18n();
   const router = useRouter();
   const [isLoged, setIsLoged] = useState(false);
 
@@ -101,7 +102,7 @@ function App({ Component, pageProps }) {
                   (router.pathname === "/save-expenses" ? "active" : "inactive")
                 }
               >
-                Registrar Gasto
+                {t.registerExp}
               </a>
             </Link>
           </li>
@@ -113,7 +114,7 @@ function App({ Component, pageProps }) {
                   (router.pathname === "/statistics" ? "active" : "inactive")
                 }
               >
-                Estadísticas
+                {t.stats}
               </a>
             </Link>
           </li>
@@ -125,7 +126,7 @@ function App({ Component, pageProps }) {
                   (router.pathname === "/book" ? "active" : "inactive")
                 }
               >
-                Gastos
+                {t.exp}
               </a>
             </Link>
           </li>

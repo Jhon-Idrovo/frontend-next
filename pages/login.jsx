@@ -15,7 +15,7 @@ function Login({ isLoged, setIsLoged }) {
     password: "",
   });
   const [form, setForm] = useState(initialState);
-
+  const [error, setError] = useState(false);
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
@@ -42,11 +42,14 @@ function Login({ isLoged, setIsLoged }) {
     <div className="base-container ">
       <form className="form">
         <h3 className="font-bold">{t.loginTitle}</h3>
+        {error ? (
+          <p className=" mt-2 text-sm text-red-500 w-full">{t.loginError}</p>
+        ) : null}
         <input
           type="text"
           name="username"
           id="username"
-          className="login-register-input my-2"
+          className="login-register-input mb-2"
           placeholder={t.common.username}
           onChange={handleChange}
         />

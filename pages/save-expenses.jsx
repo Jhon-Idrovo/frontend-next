@@ -98,7 +98,9 @@ function SaveExpenses({ isLoged }) {
             <button
               className="px-2 py-1 bg-blue-500 motion-safe:hover:scale-110 text-white rounded-sm active:bg-blue-600 "
               onClick={addRow}
-            ></button>
+            >
+              {t.saveExpenses.addRow}
+            </button>
           </tfoot>
         </table>
         {emptyValue && (

@@ -1,4 +1,7 @@
+import useI18n from "../hooks/useI18n";
+
 function ExpRow({ handleChange, deleteRow, exp, index }) {
+  const t = useI18n();
   return (
     <tr className="border-b-2 ">
       <td className=" exp-input w-2/5">
@@ -8,7 +11,7 @@ function ExpRow({ handleChange, deleteRow, exp, index }) {
           className="form-input"
           onChange={(e) => handleChange(e, e.target.name, "expType")}
           value={exp.expType}
-          placeholder="Tipo"
+          placeholder={t.saveExpenses.headers[0]}
           name={index}
         />
       </td>
@@ -18,7 +21,7 @@ function ExpRow({ handleChange, deleteRow, exp, index }) {
           type="text"
           value={exp.description}
           onChange={(e) => handleChange(e, e.target.name, "description")}
-          placeholder="Descripción"
+          placeholder={t.saveExpenses.headers[1]}
           name={index}
           list={exp.expType}
         />

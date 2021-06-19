@@ -44,7 +44,7 @@ function Login({ isLoged, setIsLoged }) {
           type="text"
           name="username"
           id="username"
-          className="login-register-input"
+          className="login-register-input my-2"
           placeholder="Nombre de usuario"
           onChange={handleChange}
         />
@@ -52,7 +52,7 @@ function Login({ isLoged, setIsLoged }) {
           type="password"
           name="password"
           id="password"
-          className="login-register-input"
+          className="login-register-input mb-2"
           placeholder="Contraseña"
           onChange={handleChange}
         />

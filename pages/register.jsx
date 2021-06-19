@@ -74,7 +74,7 @@ function Register() {
           name="email"
           id="email"
           placeholder="Email"
-          className="login-register-input"
+          className="login-register-input my-2"
           onChange={handleChange}
         />
         <input
@@ -85,6 +85,7 @@ function Register() {
           className="login-register-input"
           onChange={handleChange}
         />
+        <p className="text-sm mb-2">{t.signUp.usernameAdvice}</p>
         <input
           type="password"
           name="password"
@@ -93,6 +94,7 @@ function Register() {
           className="login-register-input"
           onChange={handleChange}
         />
+        <p className="text-sm mb-2 w-full">{t.signUp.passwordAdvice}</p>
         <input
           type="submit"
           value="Crear Cuenta"

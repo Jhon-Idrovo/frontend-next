@@ -38,7 +38,7 @@
 }
 
 .login-register-input {
-  @apply mt-2 rounded-sm pl-2;
+  @apply rounded-sm pl-2 w-full;
 }
 .submit-btn {
   @apply px-2 py-1 mt-2 rounded-sm hover:scale-75 hover:bg-blue-400;
@@ -56,7 +56,7 @@
 }
 
 .base-container {
-  @apply h-96 flex items-center justify-center md:h-80;
+  @apply flex items-center justify-center md:h-80;
 }
 
 .message-box {

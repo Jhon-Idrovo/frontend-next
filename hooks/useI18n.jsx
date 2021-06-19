@@ -1,5 +1,5 @@
 import { es, en } from "../lib/texts";
-import { useRouter } from "react";
+import { useRouter } from "next/router";
 /**
  *
  * @returns object with localized texts for use in the page

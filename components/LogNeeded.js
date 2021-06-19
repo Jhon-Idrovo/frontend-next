@@ -1,14 +1,16 @@
 import Link from "next/link";
 
+import useI18n from "../hooks/useI18n";
 function LogNeeded() {
+  const { logNeeded: t } = useI18n();
   return (
     <div className="base-container">
       <div className="message-box">
-        <h3 className="message-header">Vaya!</h3>
+        <h3 className="message-header">{t[0]}</h3>
         <p className="message">
-          Parece que no te has autentificado, por favor{" "}
+          {t[1]}{" "}
           <Link href="/login">
-            <a>ingresa aquí</a>
+            <a>{t[2]}</a>
           </Link>
         </p>
       </div>

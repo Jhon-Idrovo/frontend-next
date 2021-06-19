@@ -5,6 +5,7 @@ import LogNeeded from "../components/LogNeeded";
 import axiosInstance from "../axios";
 import ExpPercentages from "../components/ExpPercentages";
 import I_E_P from "../components/I_E_P";
+import useI18n from "../hooks/useI18n";
 
 const options = {
   scales: {
@@ -40,6 +41,7 @@ const defaultDate = {
 };
 
 function Statistics({ isLoged }) {
+  const { statistics: t } = useI18n();
   const [data, setData] = useState(null);
   const [timeFrame, setTimeFrame] = useState(defaultDate);
   const [pie, setPie] = useState(false);
@@ -75,15 +77,13 @@ function Statistics({ isLoged }) {
   return (
     <div>
       <div className="flex flex-col">
-        <h4 className="graph-header">
-          Monto acumulado por cada tipo de gasto por mes
-        </h4>
+        <h4 className="graph-header">{t.chartHeader}</h4>
         <Line data={data} options={options} />
         <form className="timeframe-form">
           <span className="">
             <span className="inline-block">
               <label htmlFor="initial-date" className="mx-2">
-                Fecha Inicio
+                {t.startTime}
               </label>
               <input
                 type="date"
@@ -98,7 +98,7 @@ function Statistics({ isLoged }) {
             <br className="sm:hidden" />
             <span className="inline-block">
               <label htmlFor="end-date" className="mx-2">
-                Fecha Final
+                {t.endTime}
               </label>
               <input
                 type="date"
@@ -118,7 +118,7 @@ function Statistics({ isLoged }) {
               onClick={handleSubmit}
               id="submit-btn"
             >
-              Cargar
+              {t.load}
             </button>
           </span>
         </form>
@@ -126,7 +126,7 @@ function Statistics({ isLoged }) {
           className="btn-base mt-2 self-center px-2"
           onClick={changeColors}
         >
-          Generar nuevos colores
+          {t.newColrs}
         </button>
       </div>
     </div>

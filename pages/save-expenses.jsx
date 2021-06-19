@@ -4,6 +4,7 @@ import LogNeeded from "../components/LogNeeded";
 import ExpRow from "../components/ExpRow";
 
 import axiosInstance from "../axios";
+import useI18n from "../hooks/useI18n";
 
 const baseExpense = {
   expType: "",
@@ -11,6 +12,7 @@ const baseExpense = {
   amount: "",
 };
 function SaveExpenses({ isLoged }) {
+  const t = useI18n();
   const [expenses, setExpenses] = useState([
     JSON.parse(JSON.stringify(baseExpense)),
   ]);
@@ -74,9 +76,9 @@ function SaveExpenses({ isLoged }) {
         <table className="w-screen">
           <thead>
             <tr>
-              <th className="border-b-2">Tipo</th>
-              <th className="border-b-2">Descripción</th>
-              <th className="border-b-2">Monto</th>
+              <th className="border-b-2">{t.saveExpenses.headers[0]}</th>
+              <th className="border-b-2">{t.saveExpenses.headers[1]}</th>
+              <th className="border-b-2">{t.saveExpenses.headers[2]}</th>
             </tr>
           </thead>
           <tbody>
@@ -96,14 +98,12 @@ function SaveExpenses({ isLoged }) {
             <button
               className="px-2 py-1 bg-blue-500 motion-safe:hover:scale-110 text-white rounded-sm active:bg-blue-600 "
               onClick={addRow}
-            >
-              Añadir entrada
-            </button>
+            ></button>
           </tfoot>
         </table>
         {emptyValue && (
           <div className="text-error">
-            <p>Porfavor llena todas las casillas anteriores para proceder</p>
+            <p>{t.saveExpenses.error}</p>
           </div>
         )}
         <div className="flex justify-around w-full">
@@ -113,57 +113,22 @@ function SaveExpenses({ isLoged }) {
             className="btn-base px-8 mt-3"
             onClick={handleSubmit}
           >
-            Guardar
+            {t.common.save}
           </button>
         </div>
       </form>
       <datalist id="expensesList">
-        <option value="Alimentación" hidden></option>
-        <option value="Farmacia"></option>
-        <option value="Servicios básicos"></option>
-        <option value="Vestimenta"></option>
-        <option value="Ocio(Entreteniemiento en general)"></option>
-        <option value="Mascotas"></option>
-        <option value="Donaciones"></option>
-        <option value="Otros"></option>
+        {Object.keys(t.saveExpenses.expensesList).map((optionVal, index) => (
+          <option value={optionVal} hidden={index === 0}></option>
+        ))}
       </datalist>
-      <datalist id="Alimentación">
-        <option className="Food" value="Carne"></option>
-        <option className="Food" value="Legumbres"></option>
-        <option className="Food" value="Huevos"></option>
-        <option className="Food" value="Vegetales"></option>
-        <option className="Food" value="Frutas"></option>
-      </datalist>
-      {/* <!--CLOTHING OPTIONS--> */}
-      <datalist id="Vestimenta">
-        <option value="Camisas/Blusas" className="Clothes"></option>
-        <option value="Zapatos" className="Clothes"></option>
-        <option value="Pantalones" className="Clothes"></option>
-        <option value="Abrigos" className="Clothes"></option>
-        <option value="Adornos" className="Clothes"></option>
-      </datalist>
-      {/* <!--BASIC SERVICES OPTIONS--> */}
-      <datalist id="Servicios básicos">
-        <option className="BasicServices" value="Agua Potable"></option>
-        <option className="BasicServices" value="Energía Eléctrica"></option>
-        <option className="BasicServices" value="Internet"></option>
-        <option className="BasicServices" value="Gas"></option>
-        <option className="BasicServices" value=""></option>
-      </datalist>
-      {/* <!--PETS OPTIONS--> */}
-      <datalist id="Mascotas">
-        <option value="Comida" className="Pets"></option>
-        <option value="Accesorios" className="Pets"></option>
-        <option value="Farmacia" className="Pets"></option>
-      </datalist>
-      {/* <!--LEISURE OPTIONS--> */}
-      <datalist id="Ocio(Entreteniemiento en general)">
-        <option value="Viajes" className="Leisure"></option>
-        <option value="Películas" className="Leisure"></option>
-        <option value="Videojuegos" className="Leisure"></option>
-        <option value="Juguetes varios" className="Leisure"></option>
-        <option value="" className="Leisure"></option>
-      </datalist>
+      {Object.keys(t.saveExpenses.expensesList).map((expType) => {
+        <datalist id={expType}>
+          {t.saveExpenses.expensesList[expType].map((optionVal) => {
+            <option value={optionVal}></option>;
+          })}
+        </datalist>;
+      })}
     </div>
   );
 }

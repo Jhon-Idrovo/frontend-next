@@ -9,7 +9,10 @@ import Loading from "../components/Loading";
 import Expense from "../components/Expense";
 import ExportToExcel from "../components/ExportToExcel";
 
+import useI18n from "../hooks/useI18n";
+
 function ExpensesList({ isLoged }) {
+  const { book: t } = useI18n();
   const [expenses, setExpenses] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -47,15 +50,14 @@ function ExpensesList({ isLoged }) {
         className="btn-base px-2 mt-1"
         onClick={() => ExportToExcel(expenses, "data")}
       >
-        Descargar datos en Excel
+        {t.download}
       </button>
       <table className="w-screen text-xs sm:text-base">
         <thead className="border-b-4 border-blue-600">
           <tr>
-            <th>Fecha</th>
-            <th>Tipo</th>
-            <th>Descripción</th>
-            <th>Monto</th>
+            {t.tHeaders.map((h) => (
+              <th>{h}</th>
+            ))}
           </tr>
         </thead>
         <tbody className="exp-show-tbody">

@@ -1,11 +1,14 @@
 import { useState } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
+import useI18n from "../hooks/useI18n";
 
 import axiosInstance from "../axios";
 
 function Login({ isLoged, setIsLoged }) {
   const router = useRouter();
+  //i18n
+  const t = useI18n();
   const url = "/api/token/";
   const initialState = Object.freeze({
     username: "",
@@ -36,7 +39,7 @@ function Login({ isLoged, setIsLoged }) {
   return (
     <div className="base-container ">
       <form className="form">
-        <h3 className="font-bold">INGRESO</h3>
+        <h3 className="font-bold">{t.loginTitle}</h3>
         <input
           type="text"
           name="username"
@@ -61,12 +64,12 @@ function Login({ isLoged, setIsLoged }) {
         />
 
         <span className="self-start mt-4 font-semibold ">
-          No tienes una cuenta aún?
+          {t.loginFooter[0]}
         </span>
         <span className="self-start font-light">
-          Empieza a tomar el control de tu dinero presionando{" "}
+          {t.loginFooter[1]}{" "}
           <Link href="/register">
-            <a>aquí</a>
+            <a>{t.loginFooter[2]}</a>
           </Link>
         </span>
       </form>

@@ -2,9 +2,12 @@ import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import axiosInstance from "../axios";
+import useI18n from "../hooks/useI18n";
 
 function Register() {
   const router = useRouter();
+  //i18n
+  const t = useI18n();
 
   const initialState = Object.freeze({
     username: "",
@@ -55,7 +58,7 @@ function Register() {
   return (
     <div className="base-container">
       <form className="form">
-        <h3 className="font-bold">REGISTRO</h3>
+        <h3 className="font-bold">{t.signUp.title}</h3>
         <ul className="error-msgs">
           {errorMessage &&
             errorMessage.map((msg) => {
@@ -96,11 +99,11 @@ function Register() {
           className="submit-btn"
           onClick={handleSubmit}
         />
-        <p className="self-start mt-4 font-semibold">Ya tienes una cuenta? </p>
+        <p className="self-start mt-4 font-semibold">{t.signUp.footer[0]} </p>
         <p className="self-start font-light">
-          Ingresa{" "}
+          {t.signUp.footer[1]}{" "}
           <Link href="/login">
-            <a>aquí</a>
+            <a>{t.signUp.footer[2]}</a>
           </Link>
         </p>
       </form>

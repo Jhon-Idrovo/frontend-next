@@ -1,14 +1,12 @@
 import React from "react";
-
+import useI18n from "../hooks/useI18n";
 function Error() {
+  const { common: t } = useI18n();
   return (
     <div className="base-container">
       <div className="message-box">
         <h3 className="message-header">Disculpas</h3>
-        <p>
-          Parece que hubo un error con nuestros servidores, estamos trabajando
-          para solucionarlo lo antes posible
-        </p>
+        <p>{t.error}</p>
       </div>
     </div>
   );

@@ -23,21 +23,24 @@ function Login({ isLoged, setIsLoged }) {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    axiosInstance.post(url, form).then((response) => {
-      if (response.status === 200) {
-        const data = response.data;
+    axiosInstance
+      .post(url, form)
+      .then((response) => {
+        if (response.status === 200) {
+          const data = response.data;
 
-        localStorage.setItem("access_token", data["access"]);
-        localStorage.setItem("refresh_token", data["refresh"]);
-        axiosInstance.defaults.headers["Authorization"] =
-          "JWT " + data["access"];
-        setIsLoged(true);
-        router.push("/save-expenses");
-      } else {
-        console.log(response);
-        setError(true);
-      }
-    });
+          localStorage.setItem("access_token", data["access"]);
+          localStorage.setItem("refresh_token", data["refresh"]);
+          axiosInstance.defaults.headers["Authorization"] =
+            "JWT " + data["access"];
+          setIsLoged(true);
+          router.push("/save-expenses");
+        } else {
+          console.log(response);
+          setError(true);
+        }
+      })
+      .catch(() => setError(true));
   };
   return (
     <div className="base-container ">

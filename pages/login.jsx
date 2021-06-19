@@ -50,7 +50,7 @@ function Login({ isLoged, setIsLoged }) {
           type="text"
           name="username"
           id="username"
-          className="login-register-input mb-2"
+          className="login-register-input my-2"
           placeholder={t.common.username}
           onChange={handleChange}
         />

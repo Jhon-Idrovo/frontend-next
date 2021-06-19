@@ -35,6 +35,7 @@ function Login({ isLoged, setIsLoged }) {
         router.push("/save-expenses");
       } else {
         console.log(response);
+        setError(true);
       }
     });
   };

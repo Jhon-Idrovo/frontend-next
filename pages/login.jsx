@@ -33,6 +33,8 @@ function Login({ isLoged, setIsLoged }) {
           "JWT " + data["access"];
         setIsLoged(true);
         router.push("/save-expenses");
+      } else {
+        console.log(response);
       }
     });
   };

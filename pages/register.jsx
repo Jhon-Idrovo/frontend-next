@@ -81,23 +81,23 @@ function Register() {
           type="text"
           name="username"
           id="username"
-          placeholder="Nombre de usuario"
+          placeholder={t.common.username}
           className="login-register-input"
           onChange={handleChange}
         />
-        <p className="text-sm mb-2">{t.signUp.usernameAdvice}</p>
+        <p className="text-sm mb-2 w-full">{t.signUp.usernameAdvice}</p>
         <input
           type="password"
           name="password"
           id="password"
-          placeholder="Contraseña"
+          placeholder={t.common.password}
           className="login-register-input"
           onChange={handleChange}
         />
         <p className="text-sm mb-2 w-full">{t.signUp.passwordAdvice}</p>
         <input
           type="submit"
-          value="Crear Cuenta"
+          value={t.signUp.createAccount}
           className="submit-btn"
           onClick={handleSubmit}
         />

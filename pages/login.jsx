@@ -45,7 +45,7 @@ function Login({ isLoged, setIsLoged }) {
           name="username"
           id="username"
           className="login-register-input my-2"
-          placeholder="Nombre de usuario"
+          placeholder={t.common.username}
           onChange={handleChange}
         />
         <input
@@ -53,12 +53,12 @@ function Login({ isLoged, setIsLoged }) {
           name="password"
           id="password"
           className="login-register-input mb-2"
-          placeholder="Contraseña"
+          placeholder={t.common.password}
           onChange={handleChange}
         />
         <input
           type="submit"
-          value="Ingresar"
+          value={t.loginBtn}
           className="submit-btn"
           onClick={handleSubmit}
         />

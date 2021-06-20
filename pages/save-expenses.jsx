@@ -121,15 +121,20 @@ function SaveExpenses({ isLoged }) {
       </form>
       <datalist id="expensesList">
         {Object.keys(t.saveExpenses.expensesList).map((optionVal, index) => (
-          <option value={optionVal} hidden={index === 0}></option>
+          <option value={optionVal} key={index} hidden={index === 0}></option>
         ))}
       </datalist>
       {Object.keys(t.saveExpenses.expensesList).map((expType) => {
-        <datalist id={expType}>
-          {t.saveExpenses.expensesList[expType].map((optionVal) => {
-            <option value={optionVal}></option>;
-          })}
-        </datalist>;
+        console.log("r1", expType);
+        return (
+          <datalist id={expType} key={expType}>
+            {t.saveExpenses.expensesList[expType].map((optionVal) => {
+              return (
+                <option value={optionVal} key={expType + optionVal}></option>
+              );
+            })}
+          </datalist>
+        );
       })}
     </div>
   );

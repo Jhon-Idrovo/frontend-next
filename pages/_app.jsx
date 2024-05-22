@@ -53,7 +53,7 @@ function App({ Component, pageProps }) {
                       refresh_token: localStorage.getItem("refresh_token"),
                     });
                     if (r.status !== 202) throw Error(r.statusText);
-                    localStorage.clear();
+                    // localStorage.clear();
                     // router.re
                   }}
                   className={

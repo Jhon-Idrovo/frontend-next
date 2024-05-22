@@ -54,13 +54,13 @@ function App({ Component, pageProps }) {
                     });
                     if (r.status !== 202) throw Error(r.statusText);
                     localStorage.clear();
-                    window.location.reload();
+                    // router.re
                   }}
                   className={
                     router.pathname === "/logout" ? "upper-active" : "upper-btn"
                   }
                 >
-                  <a>Logout</a>
+                  Logout
                 </Button>
               )}
             </li>

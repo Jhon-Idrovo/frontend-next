@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import Head from "next/head";
 import { useRouter } from "next/router";
+import axiosInstance from "../axios";
 
 function App({ Component, pageProps }) {
   const router = useRouter();
@@ -46,14 +47,21 @@ function App({ Component, pageProps }) {
                   <a>Login</a>
                 </Link>
               ) : (
-                <Link
-                  href="/logout/"
+                <Button
+                  onClick={async () => {
+                    const r = await axiosInstance.post("api/logout", {
+                      refresh_token: localStorage.getItem("refresh_token"),
+                    });
+                    if (r.status !== 202) throw Error(r.statusText);
+                    localStorage.clear();
+                    window.location.reload();
+                  }}
                   className={
                     router.pathname === "/logout" ? "upper-active" : "upper-btn"
                   }
                 >
                   <a>Logout</a>
-                </Link>
+                </Button>
               )}
             </li>
             {/* <li className="list-item">

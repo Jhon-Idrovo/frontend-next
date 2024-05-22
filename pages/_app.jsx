@@ -47,21 +47,24 @@ function App({ Component, pageProps }) {
                   <a>Login</a>
                 </Link>
               ) : (
-                <Button
-                  onClick={async () => {
-                    const r = await axiosInstance.post("api/logout", {
-                      refresh_token: localStorage.getItem("refresh_token"),
-                    });
-                    if (r.status !== 202) throw Error(r.statusText);
-                    // localStorage.clear();
-                    // router.re
-                  }}
-                  className={
-                    router.pathname === "/logout" ? "upper-active" : "upper-btn"
-                  }
-                >
-                  Logout
-                </Button>
+                // <Button
+                //   onClick={async () => {
+                //     const r = await axiosInstance.post("api/logout", {
+                //       refresh_token: localStorage.getItem("refresh_token"),
+                //     });
+                //     if (r.status !== 202) throw Error(r.statusText);
+                //     // localStorage.clear();
+                //     // router.re
+                //   }}
+                //   className={
+                //     router.pathname === "/logout" ? "upper-active" : "upper-btn"
+                //   }
+                // >
+                //   Logout
+                // </Button>
+                <Link href="/">
+                  <a>Logout</a>
+                </Link>
               )}
             </li>
             {/* <li className="list-item">

@@ -56,7 +56,7 @@ function App({ Component, pageProps }) {
                 </Link>
               )}
             </li>
-            <li className="list-item">
+            {/* <li className="list-item">
               <Link
                 href="/config"
                 className={
@@ -67,7 +67,7 @@ function App({ Component, pageProps }) {
                   <i className="fas fa-cog"></i>
                 </a>
               </Link>
-            </li>
+            </li> */}
           </ul>
         </div>
         <ul>

@@ -36,35 +36,34 @@ function App({ Component, pageProps }) {
         <div className="first-line">
           <label className="logo">Home Finance</label>
           <ul className="extras">
-            <li className="list-item">
+            <li
+              className="list-item"
+              style={{
+                "flex-direction": "row-reverse",
+              }}
+            >
               {!isLoged ? (
-                <Link
-                  href="/login/"
-                  className={
-                    router.pathname === "/login" ? "upper-active" : "upper-btn"
-                  }
-                >
+                <Link href="/login/">
                   <a>Login</a>
                 </Link>
               ) : (
-                // <Button
-                //   onClick={async () => {
-                //     const r = await axiosInstance.post("api/logout", {
-                //       refresh_token: localStorage.getItem("refresh_token"),
-                //     });
-                //     if (r.status !== 202) throw Error(r.statusText);
-                //     // localStorage.clear();
-                //     // router.re
-                //   }}
-                //   className={
-                //     router.pathname === "/logout" ? "upper-active" : "upper-btn"
-                //   }
-                // >
-                //   Logout
-                // </Button>
-                <Link href="/">
-                  <a>Logout</a>
-                </Link>
+                <button
+                  onClick={async () => {
+                    const r = await axiosInstance.post("api/logout/", {
+                      refresh_token: localStorage.getItem("refresh_token"),
+                    });
+                    if (r.status !== 202) throw Error(r.statusText);
+                    localStorage.clear();
+                    setIsLoged(false);
+                    router.push("/login");
+                  }}
+                  id="logout-btn"
+                >
+                  Logout
+                </button>
+                // <Link href="/">
+                //   <a>Logout</a>
+                // </Link>
               )}
             </li>
             {/* <li className="list-item">

@@ -36,7 +36,6 @@ li {
 }
 nav ul li a {
   color: whitesmoke;
-  border-radius: 5px 5px 0 0;
   padding: 5px;
   border-width: 0;
 }
@@ -44,16 +43,6 @@ nav ul li a {
 a.active,
 a:hover {
   background-color: rgb(206, 203, 235);
-}
-
-.upper-active {
-  background-color: rgb(206, 203, 235);
-  border-radius: 5px;
-}
-
-.upper-btn:hover {
-  background-color: rgb(206, 203, 235);
-  border-radius: 5px;
 }
 
 .extras {
@@ -111,7 +100,6 @@ a:hover {
   display: flex;
   flex-direction: column;
   align-items: center;
-  border-radius: 2px;
   background-color: rgba(228, 226, 255, 0.877);
   box-shadow: 0 8px 8px 0 rgba(0, 0, 0, 0.623),
     0 6px 10px 0 rgba(0, 0, 0, 0.507);
@@ -120,12 +108,10 @@ a:hover {
 
 .form input {
   display: block;
-  border-radius: 5px;
   border: none;
-  height: 5vh;
-  margin: 3%;
+  margin: 2%;
   font-family: "Montserrat", sans-serif;
-  padding: 1.5rem;
+  padding: 2%;
   outline-color: rgba(137, 43, 226, 0.13);
 }
 
@@ -304,4 +290,20 @@ SAVE EXPENSES
 
 .exp-show-tr td {
   border-bottom: 0.1em solid rgb(253, 253, 253);
+}
+
+/* LOGOUT BUTTON */
+#logout-btn {
+  margin: 5px;
+  border: none;
+  font-family: inherit;
+  padding-top: 2%;
+  padding-bottom: 2%;
+  padding-left: 4%;
+  padding-right: 4%;
+  text-align: center;
+}
+
+#logout-btn:hover {
+  background-color: rgb(234, 210, 210);
 }

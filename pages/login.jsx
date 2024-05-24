@@ -3,7 +3,6 @@ import { useRouter } from "next/router";
 import Link from "next/link";
 
 import axiosInstance from "../axios";
-import "../styles/login.module.css";
 
 function Login({ isLoged, setIsLoged }) {
   const router = useRouter();

@@ -4,7 +4,6 @@ import Layout from "../components/Layout";
 import axiosInstance from "../axios";
 import NoExpenses from "../components/NoExpenses";
 import Error from "../components/Error";
-import "../styles/book.module.css";
 import LogNeeded from "../components/LogNeeded";
 import Loading from "../components/Loading";
 

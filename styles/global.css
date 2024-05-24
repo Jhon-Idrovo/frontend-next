@@ -152,3 +152,156 @@ a:hover {
 .form-container a {
   color: brown;
 }
+/* 
+SAVE EXPENSES
+*/
+
+.exp-container {
+  width: 100%;
+}
+
+.table-headers {
+  border: ridge;
+  background-color: blanchedalmond;
+}
+
+.type-entry,
+.description-entry,
+.amount-entry {
+  width: 40vw;
+  border: none;
+  border-bottom: 0.1em solid rgb(253, 253, 253);
+  padding: 1% 0.5%;
+}
+
+.type-entry input,
+.description-entry input,
+.amount-entry input {
+  border-radius: 3px;
+  border: none;
+  height: 4vh;
+  text-align: justify;
+  width: 100%;
+  font-family: inherit;
+}
+
+.amount-entry {
+  width: 20vw;
+}
+
+.exp-submit-btn {
+  width: 50%;
+  height: 2rem;
+  margin-top: 2rem;
+  font-family: inherit;
+  border: none;
+}
+
+#submit-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+#add-btn {
+  margin-top: 5px;
+  border: none;
+  font-family: inherit;
+  padding: 2%;
+  text-align: center;
+}
+
+#add-btn:hover,
+.exp-submit-btn:hover {
+  background-color: rgb(247, 174, 174);
+}
+
+#empty-row-err {
+  width: 100%;
+  color: red;
+  text-align: center;
+  margin-top: 5px;
+}
+
+#empty-row-err p {
+  background-color: aliceblue;
+}
+
+/* LOADING */
+
+.spinner {
+  border: 4px solid rgba(0, 0, 0, 0.63);
+  width: 5vh;
+  height: 5vh;
+  border-radius: 50%;
+  margin-bottom: 2vh;
+
+  border-left-color: transparent;
+  animation: spin 0.2s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* STATISTICS */
+
+.stats-form {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.date {
+  display: inline-block;
+  width: min-content;
+  margin-right: 5%;
+}
+
+#dates-container {
+  display: contents;
+}
+
+.stats-form input {
+  border: none;
+  border-radius: 3px;
+  padding: 2%;
+  font-family: inherit;
+}
+
+#submit-btn:hover {
+  background-color: rgb(245, 102, 102);
+}
+
+@media only screen and (max-width: 499px) {
+  #dates-container {
+    width: min-content;
+  }
+  #submit-btn {
+    display: inline;
+    margin-top: 2%;
+  }
+}
+
+/* BOOK */
+.book-table {
+  table-layout: auto;
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 5px;
+}
+
+.exp-show-thead th {
+  border: ridge;
+  background-color: blanchedalmond;
+}
+
+.exp-show-tr td {
+  border-bottom: 0.1em solid rgb(253, 253, 253);
+}

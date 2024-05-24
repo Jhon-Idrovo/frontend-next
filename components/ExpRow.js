@@ -9,6 +9,7 @@ function ExpRow({ handleChange, exp, index }) {
           value={exp.expType}
           placeholder="Tipo"
           name={index}
+          style={{ width: "100%" }}
         />
       </td>
       <td className="description-entry">
@@ -19,6 +20,7 @@ function ExpRow({ handleChange, exp, index }) {
           placeholder="Descripción"
           name={index}
           list={exp.expType}
+          style={{ width: "100%" }}
         />
       </td>
       <td className="amount-entry">
@@ -28,6 +30,7 @@ function ExpRow({ handleChange, exp, index }) {
           onChange={(e) => handleChange(e, e.target.name, "amount")}
           placeholder="0.00"
           name={index}
+          style={{ width: "100%" }}
         />
       </td>
     </tr>

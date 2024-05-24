@@ -29,7 +29,6 @@ function Register() {
         }
       })
       .catch((err) => {
-        console.log(err.response.data);
         if (err.response) {
           /*the request was made and the server responded 
           but with a status code that falls out of the 

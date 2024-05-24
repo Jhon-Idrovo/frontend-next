@@ -2,7 +2,7 @@ import { useState } from "react";
 
 import LogNeeded from "../components/LogNeeded";
 import ExpRow from "../components/ExpRow";
-import "../styles/save-expenses.module.css";
+
 import axiosInstance from "../axios";
 
 const baseExpense = {
@@ -58,7 +58,7 @@ function SaveExpenses({ isLoged }) {
   return (
     <div className="exp-container">
       <form id="expenses-form">
-        <table>
+        <table style={{ width: "100%" }}>
           <thead>
             <tr className="head-row">
               <th className="table-headers">Tipo</th>

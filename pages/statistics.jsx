@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 
 import { Line } from "react-chartjs-2";
 
-import "../styles/statistics.module.css";
 import LogNeeded from "../components/LogNeeded";
 import axiosInstance from "../axios";
 

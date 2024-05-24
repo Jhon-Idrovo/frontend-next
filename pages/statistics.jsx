@@ -65,7 +65,7 @@ function Statistics({ isLoged }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    //submit();
+    submit();
   };
 
   if (!isLoged) return <LogNeeded />;
@@ -74,7 +74,7 @@ function Statistics({ isLoged }) {
       <h4 className="graph-header">
         Monto acumulado por cada tipo de gasto por mes
       </h4>
-      {/* <Line data={data} options={options} /> */}
+      <Line data={data} options={options} />
       <form className="stats-form">
         <span id="dates-container">
           <span className="date">

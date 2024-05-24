@@ -6,6 +6,7 @@ import NoExpenses from "../components/NoExpenses";
 import Error from "../components/Error";
 import LogNeeded from "../components/LogNeeded";
 import Loading from "../components/Loading";
+import Expense from "../components/Expense";
 
 function ExpensesList({ isLoged }) {
   const [expenses, setExpenses] = useState(null);

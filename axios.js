@@ -1,7 +1,9 @@
 import axios from "axios";
 
-// const baseURL = "http://127.0.0.1:8000/";
-const baseURL = "https://backend-1-410a8b404e22.herokuapp.com/";
+const baseURL =
+  process.env.NODE_ENV === "development"
+    ? "http://127.0.0.1:8000/"
+    : "https://backend-1-410a8b404e22.herokuapp.com/";
 
 const axiosInstance = axios.create({
   baseURL: baseURL,
@@ -29,7 +31,7 @@ axiosInstance.interceptors.response.use(
       alert(
         "A server/network error occurred. " +
           "Looks like CORS might be the problem. " +
-          "Sorry about this - we will get it fixed shortly."
+          "Sorry about this - we will get it fixed shortly.",
       );
       return Promise.reject(error);
     }
@@ -52,7 +54,7 @@ axiosInstance.interceptors.response.use(
 
       if (refreshToken) {
         const tokenParts = JSON.parse(
-          Buffer.from(refreshToken.split(".")[1], "base64").toString()
+          Buffer.from(refreshToken.split(".")[1], "base64").toString(),
         );
 
         // exp date in token is expressed in seconds, while now() returns milliseconds:
@@ -87,7 +89,7 @@ axiosInstance.interceptors.response.use(
 
     // specific error handling done elsewhere
     return Promise.reject(error);
-  }
+  },
 );
 
 export default axiosInstance;

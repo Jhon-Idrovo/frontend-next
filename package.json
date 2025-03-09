@@ -6,9 +6,9 @@
     "node": "20.x"
   },
   "scripts": {
-    "dev": "cross-env NODE_OPTIONS='--inspect' next dev",
+    "dev": "cross-env NODE_ENV=development NODE_OPTIONS='--inspect --openssl-legacy-provider' next dev",
     "build": "NODE_OPTIONS='--openssl-legacy-provider' next build",
-    "start": "next start -p $PORT"
+    "start": "export NODE_ENV=production && next start -p $PORT"
   },
   "dependencies": {
     "axios": "0.21.4",
